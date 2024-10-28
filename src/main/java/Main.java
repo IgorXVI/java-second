@@ -1,10 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Supplier;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,6 +17,26 @@ public class Main {
         for(Map.Entry<String, Integer> entry : cadidateMap.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
+
+        interface Fun {
+            int apply(int a, int b);
+        }
+
+        Fun fun = (int a, int b) -> {
+            return a + b;
+        };
+
+        int result = fun.apply(1, 2);
+
+        System.out.println(result);
+
+        Supplier<List<Integer>> xs = LinkedList::new;
+
+        List<Integer> cart = xs.get();
+        cart.add(1);
+        cart.add(2);
+
+        System.out.println(cart);
     }
 
     private static ArrayList<String> readInput(String inputPath) {
